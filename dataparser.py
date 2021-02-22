@@ -23,6 +23,7 @@ def parse(inp):
             'id':i,
             'ingredients':ingreds
         })
+    ns.pizzas = pizzas
     return ns
 
 class FlexibleEncoder(json.JSONEncoder):
