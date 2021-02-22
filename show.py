@@ -18,7 +18,7 @@ def test(tc_name, inp):
     plt.scatter([2,3,4], [ns.T2, ns.T3, ns.T4])
     plt.show()
     ingredients = {}
-    plt.scatter([i for i in range(len(ns.pizzas))], [len(pizza) for pizza in ns.pizzas])
+    plt.scatter([i for i in range(len(ns.pizzas))], [len(pizza['ingredients']) for pizza in ns.pizzas])
     plt.show()
     for pizza in ns.pizzas:
         for ing in pizza['ingredients']:
