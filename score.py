@@ -13,9 +13,11 @@ def score(inp, out):
     assert D+1<=len(out.split('\n'))<=D+2
     out = 0
     used_pizzas = set()
+    cnt = [0,0,0,0,0]
     for _ in range(D):
         L = nl(itr)
         assert len(L) == L[0]+1
+        cnt[L[0]] += 1
         L = L[1:]
         ingreds_team = []
         for p_id in L:
@@ -24,4 +26,5 @@ def score(inp, out):
             used_pizzas.add(p_id)
             ingreds_team += ns.pizzas[p_id]['ingredients']
         out += len(set(ingreds_team))**2
+    assert cnt[2]<=ns.T2 and cnt[3]<=ns.T3 and cnt[4]<=ns.T4
     return out
