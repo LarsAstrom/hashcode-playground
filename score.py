@@ -10,7 +10,7 @@ def score(inp, out):
     # TODO: implement
     D = ni(itr)
     assert 1<=D<=ns.T2+ns.T3+ns.T4
-    assert len(out.split('\n')) == D+1
+    assert D+1<=len(out.split('\n'))<=D+2
     out = 0
     used_pizzas = set()
     for _ in range(D):
