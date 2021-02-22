@@ -9,13 +9,24 @@ from util import path
 try:     import matplotlib.pyplot as plt
 except:  pass
 
-# ns is the namespace. 
+# ns is the namespace.
 # If needed write a simple parser which returns ns.
 def test(tc_name, inp):
     print(tc_name)
     print(inp)
     print('==============')
     ns = parse(inp)
+    plt.scatter([2,3,4], [ns.T2, ns.T3, ns.T4])
+    plt.show()
+    ingredients = {}
+    for pizza in ns.pizzas:
+        for ing in pizza['ingredients']:
+            if ing not in ingredients:
+                ingredients[ing]=0
+            ingredients[ing]+=1
+    print(len(ingredients))
+    plt.scatter([i for i in range(len(ingredients))], ingredients.values())
+    plt.show()
     # TODO: display inp in readable form!
 
 def get_tasks():
@@ -38,7 +49,7 @@ def get_tasks():
 
 if __name__=='__main__':
     tasks = get_tasks()
-    
+
     for tc_name in tasks:
         in_file_name = 'in/{}.in'.format(tc_name)
         f = open(in_file_name)
