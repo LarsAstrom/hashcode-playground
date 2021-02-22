@@ -16,18 +16,18 @@ int main() {
   int n; cin >> n;
   int num[5];
   vi groupSizes;
+  cin >> num[2] >> num[3] >> num[4];
   rep(s,2,5) rep(_,0,num[s]) groupSizes.push_back(s);
   reverse(all(groupSizes));
 
-  cin >> num[2] >> num[3] >> num[4];
   cerr << "read a line or something" << endl;
-  vector<pair<pii,set<string>>> pizzas(n);
+  vector<pii> pizzas(n);
   rep(i,0,n) {
-    cin >> pizzas[i].first.first;
-    pizzas[i].first.second = i;
-    rep(_,0,pizzas[i].first.first) {
+    cin >> pizzas[i].first;
+    pizzas[i].second = i;
+    rep(_,0,pizzas[i].first) {
       string temp; cin >> temp;
-      pizzas[i].second.insert(temp);
+      //pizzas[i].second.insert(temp);
     }
   }
   sort(all(pizzas));
@@ -43,22 +43,23 @@ int main() {
     vi temp;
     int pizzasRemaining = sz(pizzas) - pizzaIndex;
     if (pizzasRemaining < groupSizes[groupIndex]) {
-      pizzaIndex++;
+      groupIndex++;
       continue;
     }
     rep(_,0,groupSizes[groupIndex]) {
-      temp.push_back(pizzas[pizzaIndex].first.second);
+      temp.push_back(pizzas[pizzaIndex].second);
       pizzaIndex++;
     }
     output.push_back(temp);
     groupIndex++;
   }
   cout << sz(output) << endl;
-  trav(elem, output) {
-    cout << sz(elem);
-    trav(i, elem) cout << " " << i;
+  trav(v, output) {
+    cout << sz(v);
+    trav(i, v) cout << " " << i;
     cout << endl;
   }
+  cerr << "done with a test case" << endl;
   /*
   cerr << sz(output) << endl;
   trav(elem, output) {
