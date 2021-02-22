@@ -13,7 +13,6 @@ except:  pass
 # If needed write a simple parser which returns ns.
 def test(tc_name, inp):
     print(tc_name)
-    print(inp)
     print('==============')
     ns = parse(inp)
     plt.scatter([2,3,4], [ns.T2, ns.T3, ns.T4])
